@@ -1,0 +1,114 @@
+package dataStructures.linkedList;
+
+public class LinkedList {
+    private int length = 0;
+    private ListNode head = null;
+
+    // Default constructors
+    public LinkedList(){
+        this.length = 0;
+    }
+
+    // Get length of LinkedList
+    public int getLength(){
+        int length = 0;
+        ListNode curr = this.head;
+        while(curr != null){
+            length += 1;
+            curr = curr.getNext();
+        }
+        return length;
+    }
+
+    // Insert element at the beginning
+    public void push(int data){
+        // Create a new node
+        ListNode node = new ListNode(data);
+        // Insert the node at the beginning
+        node.setNext(this.head);
+        this.head = node;
+        this.length += 1;
+    }
+
+    // Insert element at the beginning
+    public void append(int data){
+        // Create a new node
+        ListNode node = new ListNode(data);
+
+        // Check if LinkedList is empty
+        if(this.head == null)
+            this.head = node;
+        else {
+            ListNode curr = this.head;
+            // Iterate to reach the end of the list
+            while (curr.getNext() != null)
+                curr = curr.getNext();
+
+            // Append at the end
+            curr.setNext(node);
+        }
+        this.length += 1;
+    }
+
+    // Push all elements of array in LinkedList
+    public void pushArray(int[] arr){
+        for(int data : arr)
+            this.push(data);
+    }
+
+    // Append all elements of array in LinkedList
+    public void appendArray(int[] arr){
+        for(int data : arr)
+            this.append(data);
+    }
+
+    // Insert at a given index in the LinkedList
+    public void insertAt(int index, int data){
+        int currIndex = 0;
+        ListNode curr = this.head;
+        ListNode node = new ListNode(data);
+
+        // Case 1: Insertion at the beginning of the LinkedList
+        if(index == 0){
+            node.setNext(this.head);
+            this.head = node;
+            this.length += 1;
+        }
+        else{
+            while(curr != null && currIndex < index - 1){
+                curr = curr.getNext();
+                currIndex += 1;
+            }
+            // Case 2: LinkedList is shorted than the index requested
+            if(curr == null)
+                System.out.println("ERROR: IndexOutOfBoundsException - Cannot insert at the index ["
+                        + index + "]. Size of linkedList: " + currIndex
+                );
+            else{
+                node.setNext(curr.getNext());
+                curr.setNext(node);
+                this.length += 1;
+            }
+        }
+    }
+
+    // Get LinkedList as String
+    public String getListAsString(){
+        StringBuilder msg = new StringBuilder();
+        msg.append("Head");
+        ListNode curr = this.head;
+        while(curr != null){
+            msg.append(" --> ").append(curr.getData());
+            curr = curr.getNext();
+        }
+        msg.append(" --> ").append("END");
+        return msg.toString();
+    }
+
+    // Print LinkedList as String
+    public void printList() {
+        System.out.println(this.getListAsString());
+        System.out.println("Length of LinkedList: " + this.length);
+    }
+
+}
