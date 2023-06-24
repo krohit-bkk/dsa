@@ -2,7 +2,7 @@ package dataStructures.linkedList;
 
 public class LinkedList {
     private int length = 0;
-    private ListNode head = null;
+    public ListNode head = null;
 
     // Default constructors
     public LinkedList(){
@@ -18,6 +18,11 @@ public class LinkedList {
             curr = curr.getNext();
         }
         return length;
+    }
+
+    // Set the length of LinkedList - for manual ops
+    public void setLength(int length){
+        this.length = length;
     }
 
     // Insert element at the beginning
@@ -90,6 +95,67 @@ public class LinkedList {
                 this.length += 1;
             }
         }
+    }
+
+    // Delete an element from the beginning of the LinkedList
+    public void removeFirst(){
+        if(this.head != null){
+            this.head = this.head.getNext();
+            this.length -= 1;
+        }
+        else
+            System.out.println("ERROR: Empty linkedList. Nothing to delete!");
+    }
+
+    // Delete an element from the end of the LinkedList
+    public void removeLast(){
+        // Iterate to the second last node of the LinkedList
+        ListNode curr = this.head;
+
+        if(this.head != null){
+            // Goto second last node of the LinkedList
+            while(curr.getNext().getNext() != null)
+                curr = curr.getNext();
+
+            // Remove the last element
+            curr.setNext(null);
+            this.length -= 1;
+        }
+        else
+            System.out.println("ERROR: Empty linkedList. Nothing to delete!");
+    }
+
+    // Delete an element at a given index from a LinkedList
+    public void removeAt(int index){
+        // Case 0: index < 0 -> Remove the first element
+        if(index < 0) {
+            System.out.println("ERROR: Invalid index [" + index + "]. Valid index between 0 and size(linkedList)");
+            return;
+        }
+        // Case 1: index == 0 -> Remove the first element
+        if(index == 0) {
+            this.removeFirst();
+            return;
+        }
+        int currIndex = 0;
+        ListNode curr = this.head;
+
+        // Iterate over to the index
+        while(this.head != null && curr != null && currIndex < index-1) {
+            curr = curr.getNext();
+            currIndex += 1;
+        }
+        System.out.println("CurrIndex: " + currIndex);// + ", Curr Data: " + curr.getData());
+        // Did we reach the intended index?
+        if(currIndex == index -1){
+            curr.setNext(curr.getNext().getNext());
+            this.length -= 1;
+        }
+        // IndexOutOfBoundException - LinkedList is smaller in size.
+        else
+            System.out.println("ERROR: IndexOutOfBoundException - Requested index ["
+                    + index + "] cannot be reached. LinkedList is smaller in size [" + this.length + "]."
+            );
     }
 
     // Get LinkedList as String
