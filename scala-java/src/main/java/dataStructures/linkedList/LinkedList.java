@@ -129,7 +129,7 @@ public class LinkedList {
     public void removeAt(int index){
         // Case 0: index < 0 -> Remove the first element
         if(index < 0) {
-            System.out.println("ERROR: Invalid index [" + index + "]. Valid index between 0 and size(linkedList)");
+            System.out.println("ERROR: Invalid index [" + index + "]. Valid index between 0 and size(LinkedList)");
             return;
         }
         // Case 1: index == 0 -> Remove the first element
@@ -154,8 +154,42 @@ public class LinkedList {
         // IndexOutOfBoundException - LinkedList is smaller in size.
         else
             System.out.println("ERROR: IndexOutOfBoundException - Requested index ["
-                    + index + "] cannot be reached. LinkedList is smaller in size [" + this.length + "]."
+                    + index + "] cannot be reached. " +
+                    "LinkedList is smaller in size [" + this.length + "]."
             );
+    }
+
+    // Find if item exists in the LinkedList
+    public boolean exists(int item){
+        // Case 1: Check if LinkedList is empty
+        if(this.head == null)
+            return false;
+
+        ListNode curr = this.head;
+        while(curr != null && curr.getData() != item)
+            curr = curr.getNext();
+
+        // Check if curr is the item
+        return curr != null;
+    }
+
+    // Return the index of first occurrence of item in LinkedList
+    public int findIndex(int item){
+        int index = 0;     // Index for item not existing
+
+        // Case 1: LinkedList is empty
+        if(this.head == null)
+            return -1;
+
+        ListNode curr = this.head;
+        while(curr != null){
+            if(curr.getData() == item)
+                return index;
+
+            curr = curr.getNext();
+            index += 1;
+        }
+        return -1;
     }
 
     // Get LinkedList as String

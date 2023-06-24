@@ -37,11 +37,11 @@ public class DemoLinkedList {
         ll1.printList();
         ll1.insertAt(5, 300);   // Inserting in the middle of the LinkedList
         ll1.printList();
-        ll1.insertAt(12, 200);   // Inserting at the end of the LinkedList
+        ll1.insertAt(12, 200);  // Inserting at the end of the LinkedList
         ll1.printList();
 
         System.out.println("\n\nTesting removal of elements");
-        // Insert at a given index
+        // Remove from a given index
         ll1.removeFirst();         // Removing first element of the LinkedList
         ll1.printList();
         ll1.removeLast();          // Removing last element of the LinkedList
@@ -55,19 +55,12 @@ public class DemoLinkedList {
         ll1.removeAt(0);     // Removing the first element of the LinkedList
         ll1.printList();
 
-        LinkedList ll3 = new LinkedList();
-        int size = 2;
-        ll3.head = ListNodeUtils.getListOfSize(size);
-        ll3.setLength(size);
-
-        System.out.println("\n\n\nNew LinkedList for Testing removeAt");
-        ll3.printList();
-        ll3.removeAt(size-1);
-        ll3.printList();
-        ll3.removeAt(size-2);
-        ll3.printList();
-        ll3.removeAt(size-3);
-        ll3.printList();
+        // Find element in a LinkedList
+        System.out.println("\n\nCheck if exists...");
+        System.out.println(ll1.exists(300));
+        System.out.println(ll1.exists(200));
+        System.out.println(ll1.findIndex(300));
+        System.out.println(ll1.findIndex(200));
     }
 
 }
