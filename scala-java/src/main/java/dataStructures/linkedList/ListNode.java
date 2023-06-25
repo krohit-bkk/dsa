@@ -1,5 +1,8 @@
 package dataStructures.linkedList;
 
+// Node class used as element for the implementation of
+//  - LinkedList
+//  - CircularLinkedList
 public class ListNode {
     private int data;
     private ListNode next;

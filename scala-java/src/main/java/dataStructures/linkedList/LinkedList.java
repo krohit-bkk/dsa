@@ -200,7 +200,7 @@ public class LinkedList {
     // Get LinkedList as String
     public String getListAsString(){
         StringBuilder msg = new StringBuilder();
-        msg.append("Head");
+        msg.append("HEAD");
         ListNode curr = this.head;
         while(curr != null){
             msg.append(" --> ").append(curr.getData());
