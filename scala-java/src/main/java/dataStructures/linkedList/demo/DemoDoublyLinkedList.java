@@ -29,17 +29,15 @@ public class DemoDoublyLinkedList {
             System.out.println();
             dll1.removeFirst();
             dll1.printList();
-            dll1.printHeadTail();
         }
         while(!dll2.isEmpty()){
             System.out.println();
             dll2.removeLast();
             dll2.printList();
-            dll2.printHeadTail();
         }
 
         dll1.pushArray(new int[]{10, 20, 30, 40, 50});
-        System.out.println("\n\n>>>> ORIG DLL");
+        System.out.println("\n\n>>>> Repopulated DoublyLinkedList");
         dll1.printList();
         dll1.removeAt(0);   // Remove first
         dll1.printList();
