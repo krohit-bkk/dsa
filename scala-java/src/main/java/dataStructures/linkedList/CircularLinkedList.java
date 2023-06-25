@@ -71,6 +71,44 @@ public class CircularLinkedList {
             this.append(data);
     }
 
+    // Removes the first element of the CircularLinkedList
+    public void removeFirst(){
+        if(!this.isEmpty()){
+            // Case 1: Check if only 1 element exists in CLL
+            if(this.head.getNext() == this.head)
+                this.head = null;
+            else{
+                // Make last node point to the 2nd element of CLL
+                ListNode curr = this.head;
+                while(curr.getNext() != this.head)
+                    curr = curr.getNext();
+                curr.setNext(this.head.getNext());
+                // Adjust head pointer
+                this.head = this.head.getNext();
+            }
+            this.length -= 1;
+        }
+    }
+
+    // Remove the last element of the CircularLinkedList
+    public void removeLast(){
+        if(!this.isEmpty()){
+            // Case 1: Only 1 element in CLL
+            if(this.head.getNext() == this.head)
+                this.head = null;
+            // Regular Case: Go to last but one node
+            else{
+                ListNode curr = this.head;
+                // reach 2nd last element
+                while(curr.getNext().getNext() != this.head)
+                    curr = curr.getNext();
+                // Make 2nd last node point to 1st node of CLL
+                curr.setNext(this.head);
+            }
+            this.length -= 1;
+        }
+    }
+
     // Return CircularLinkedList as String
     public String getListAsString(){
         StringBuilder msg = new StringBuilder("HEAD");

@@ -10,12 +10,25 @@ public class DemoCircularLinkedList {
         // Insert at the beginning of CLL
         // Insert at the end of CLL
         for(int i = 1; i <= 4; i++){
-            System.out.println("Iteration: " + i);
             cll1.push(i);
-            cll1.printList();
             cll2.append(i);
+        }
+        
+        // Print CircularLinkedList
+        cll1.printList();
+        cll2.printList();
+
+        // Testing remove first
+        System.out.println("\n\n>>>> Testing remove first\n");
+        while (!cll1.isEmpty()){
+            cll1.removeFirst();
+            cll1.printList();
+        }
+        // Testing remove last
+        System.out.println("\n\n>>>> Testing remove last\n");
+        while (!cll2.isEmpty()){
+            cll2.removeLast();
             cll2.printList();
-            System.out.println();
         }
     }
 }
