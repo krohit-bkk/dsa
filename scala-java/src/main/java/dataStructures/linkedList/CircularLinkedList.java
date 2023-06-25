@@ -18,6 +18,7 @@ public class CircularLinkedList {
     public boolean isEmpty(){
         return this.head == null;
     }
+
     // Insert element in the beginning of CircularLinkedList
     public void push(int data){
         ListNode node = new ListNode(data);

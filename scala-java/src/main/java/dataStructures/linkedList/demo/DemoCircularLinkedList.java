@@ -13,7 +13,7 @@ public class DemoCircularLinkedList {
             cll1.push(i);
             cll2.append(i);
         }
-        
+
         // Print CircularLinkedList
         cll1.printList();
         cll2.printList();
