@@ -20,6 +20,11 @@ public class LinkedList {
         return length;
     }
 
+    // Check if LinkedList is empty
+    public boolean isEmpty(){
+        return this.head == null;
+    }
+
     // Set the length of LinkedList - for manual ops
     public void setLength(int length){
         this.length = length;
