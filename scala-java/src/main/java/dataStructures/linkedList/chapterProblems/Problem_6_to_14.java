@@ -3,6 +3,7 @@ package dataStructures.linkedList.chapterProblems;
 import dataStructures.linkedList.ListNode;
 import dataStructures.linkedList.ListNodeUtils;
 
+import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,15 +43,9 @@ public class Problem_6_to_14 {
         if(head != null){
             ListNode fast = head;
             ListNode slow = head;
-            while(fast != null && slow != null){
-                fast = fast.getNext();
+            while(fast != null && fast.getNext() != null){
+                fast = fast.getNext().getNext();
                 slow = slow.getNext();
-                // Fast reached the end of list
-                if(fast == null)
-                    return false;
-                // Increment fast once again
-                if(fast.getNext() != null)
-                    fast = fast.getNext();
 
                 // Fast and Slow pointers meet
                 if(fast == slow)
@@ -59,14 +54,46 @@ public class Problem_6_to_14 {
         }
         return false;
     }
+
+    // Problem 12: Find is loop exists and return the start of the loop
+    // Full implementation of Floyd's cycle finding algorithm
+    // Time  complexity: O[N]
+    // Space complexity: O[1]
+    private static int findLoopStartNode(ListNode head) {
+        // Find the loop, if exists
+        ListNode fast = head;
+        ListNode slow = head;
+        boolean loopExists = false;
+        while(fast != null && fast.getNext() != null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+            if(fast == slow) {
+                loopExists = true;
+                break;
+            }
+        }
+
+        // If loop doesn't exist
+        if(!loopExists)
+            return -1;
+        // Loop exists, finding the starting point
+        slow = head;
+        while(slow != fast){
+            slow = slow.getNext();
+            fast = fast.getNext();
+        }
+        // Return answer
+        return slow.getData();
+    }
+    
     public static void main(String[] args) throws Exception {
         // Create a linkedList
-        ListNode head = ListNodeUtils.getListOfSize(10);
-        ListNodeUtils.printList(head);
+        ListNode ll1 = ListNodeUtils.getListOfSize(10);
+        ListNodeUtils.printList(ll1);
 
         // Create a loop, say at 5th node
         ListNode fifthNode = null;
-        ListNode curr = head;
+        ListNode curr = ll1;
         int counter = 0;
         while(curr.getNext() != null){
             curr = curr.getNext();
@@ -82,20 +109,33 @@ public class Problem_6_to_14 {
         System.out.println("last node data: " + curr.getData());
         System.out.println("last next node data: " + curr.getNext().getData());
 
+        // LinkedList with no loops
+        ListNode ll2 = ListNodeUtils.getListOfSize(12);
+        ListNodeUtils.printList(ll2);
+
         // Problem 6-7: Verify of the loop exists in a LinkedList
-        boolean doesLoopExists1 = problem_6_and_7_hashmap(head);
-        System.out.println("\nProblem 6-7: Does loop exist: " + doesLoopExists1);
+        // Problem  11: Same as Problem 6 find whether Snake or Snail
+        //              - Snake (null terminated) or Snail(contains loop)]
+        boolean doesLoopExists1 = problem_6_and_7_hashmap(ll1);
+        boolean doesLoopExists2 = problem_6_and_7_hashmap(ll2);
+        System.out.println("\nProblem 6-7: Does loop exist (expected -> True) : " + doesLoopExists1);
+        System.out.println("Problem 6-7: Does loop exist (expected -> False): " + doesLoopExists2);
 
         // Problem 8: Add nodes into array and sort them and blah...
         // Good for thought exercise, but not meaningful to implement just to prove
 
         // Problem 9: Solve using Floyd's cycle finding algorithm
-        boolean doesLoopExists2 = floydsCycleFindingAlgo(head);
-        System.out.println("\nProblem 9: Floyd's - does loop exist: " + doesLoopExists2 + "\n\n");
+        boolean doesLoopExists3 = floydsCycleFindingAlgo(ll1);
+        boolean doesLoopExists4 = floydsCycleFindingAlgo(ll2);
+        System.out.println("\nProblem 9: Floyd's - does loop exist (expected -> True) : " + doesLoopExists3);
+        System.out.println("Problem 9: Floyd's - does loop exist (expected -> False): " + doesLoopExists4);
 
-        ListNode ll2 = ListNodeUtils.getListOfSize(12);     // LinkedList without loops
-        ListNodeUtils.printList(ll2);
-        boolean doesLoopExists3 = floydsCycleFindingAlgo(ll2);
-        System.out.println("Problem 9: Floyd's - does loop exist: " + doesLoopExists3);
+        // Problem 12: Check if loop exists in a LinkedList.
+        // If yes, find the start of the loop.
+        int loopStartsAt1 = findLoopStartNode(ll1);
+        int loopStartsAt2 = findLoopStartNode(ll2);
+        System.out.println("\nProblem 12: Loop exists in LL1 at node: " + loopStartsAt1);
+        System.out.println("\nProblem 12: Loop exists in LL2 at node: " + loopStartsAt2);
     }
+
 }
