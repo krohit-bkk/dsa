@@ -11,6 +11,7 @@ import java.util.Set;
 // Check the point of origination of loop, if any.
 // Floyd's cycle finding algorithm
 public class Problem_6_to_14 {
+    // Problem 6-7: Check whether a loop exists in LinkedList
     // Time  complexity: O[N]
     // Space complexity: O[N]
     private static boolean problem_6_and_7_hashmap(ListNode head) {
@@ -85,7 +86,38 @@ public class Problem_6_to_14 {
         // Return answer
         return slow.getData();
     }
-    
+
+    // Problem 15: Find the length of loop in LinkedList
+    // Time  complexity: o[N]
+    // Space complexity: O[1]
+    private static int findLoopLength(ListNode head) {
+        // Empty list
+        if(head == null)
+            return -1;
+
+        boolean loopExists = false;
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != null && fast.getNext() != null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+            if(fast == slow) {
+                loopExists = true;
+                break;
+            }
+        }
+        if(loopExists){
+            int counter = 0;
+            do{
+                slow = slow.getNext();
+                counter += 1;
+            } while(slow != fast);
+            // Length of the loop
+            return counter;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) throws Exception {
         // Create a linkedList
         ListNode ll1 = ListNodeUtils.getListOfSize(10);
@@ -135,7 +167,12 @@ public class Problem_6_to_14 {
         int loopStartsAt1 = findLoopStartNode(ll1);
         int loopStartsAt2 = findLoopStartNode(ll2);
         System.out.println("\nProblem 12: Loop exists in LL1 at node: " + loopStartsAt1);
-        System.out.println("\nProblem 12: Loop exists in LL2 at node: " + loopStartsAt2);
-    }
+        System.out.println("Problem 12: Loop exists in LL2 at node: " + loopStartsAt2);
 
+        // Problem 15: Find the length of the loop
+        int loopLength1 = findLoopLength(ll1);
+        int loopLength2 = findLoopLength(ll2);
+        System.out.println("\nProblem 15: Loop exists in LL1 at node: " + loopLength1);
+        System.out.println("Problem 15: Loop exists in LL2 at node: " + loopLength2);
+    }
 }
