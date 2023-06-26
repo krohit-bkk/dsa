@@ -63,4 +63,21 @@ public class ListNodeUtils {
         }
         return length;
     }
+
+    public static ListNode getArrayAsLinkedList(int[] arr){
+        ListNode head = null;
+        ListNode prev = null;
+        for(int num : arr){
+            ListNode node = new ListNode(num);
+            if(head == null) {
+                head = node;
+                prev = node;
+            }
+            else{
+                prev.setNext(node);
+                prev = node;
+            }
+        }
+        return head;
+    }
 }
