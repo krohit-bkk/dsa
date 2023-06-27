@@ -67,14 +67,8 @@ public class Problem_29_to_44 {
         System.out.println("\nProblem 41: Reverse a LinkedList in block of K");
         ll1 = ListNodeUtils.getListOfSize(8);
         ListNodeUtils.printList(ll1);
-        ListNode kBlockReverse = kBlockReverse(ll1, 3);
+        ListNode kBlockReverse = kBlockReverseRecursive(ll1, 10);
         ListNodeUtils.printList(kBlockReverse);
-    }
-
-    // Problem 41: Reverse a LinkedList in block of K (K > 0)
-    private static ListNode kBlockReverse(ListNode head, int k) {
-        
-        return null;
     }
 
     // Problem 29: Display LinkedList from the end
@@ -271,4 +265,30 @@ public class Problem_29_to_44 {
         head = two;
         return head;
     }
+
+    // Problem 41: Reverse a LinkedList in block of K (K > 0)
+    // Approach 1: Recursive algorithm
+    private static ListNode kBlockReverseRecursive(ListNode head, int k) {
+        // Edge case
+        if(head == null || head.getNext() == null)
+            return head;
+
+        // Reverse 1st k nodes
+        int counter = 0;
+        ListNode curr = head;
+        ListNode prev = null;
+        ListNode next = null;
+        while(curr != null && counter < k){
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+            counter += 1;
+        }
+        if(next != null)
+            head.setNext(kBlockReverseRecursive(next, k));
+        // Return head node
+        return prev;
+    }
+
 }
