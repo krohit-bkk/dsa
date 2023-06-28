@@ -2,6 +2,8 @@ package dataStructures.stack.chapterProblems;
 
 import java.util.Stack;
 
+import static dataStructures.stack.StackHelperUtils.printStack;
+
 public class Problem_5_to6 {
 
     public static void main(String[] args) {
@@ -65,15 +67,7 @@ public class Problem_5_to6 {
     }
 
     // Print stack
-    public static void printStack(Stack s){
-        Stack stack1 = (Stack) s.clone();
-        StringBuilder s1 = new StringBuilder("HEAD");
-        while(!stack1.isEmpty()){
-            s1.append(" <-- ").append(stack1.pop());
-        }
-        s1.append(" <-- END");
-        System.out.println(s1);
-    }
+
 
     // Problem 5: Brute force implementation
     // Get MinStack && MaxStack for a given array
