@@ -1,5 +1,0 @@
-package dsaOne
-
-object MergeStrtedArray {
-
-}
