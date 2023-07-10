@@ -349,7 +349,7 @@ public class Problem_28_to_38 {
         int[] seq3 = new int[]{1,2,3,4,5,4,3,2,0};  // False - odd length
         int[] seq4 = new int[]{1,2,3,4,2,1};        // False - even length
         boolean res1, res2, res3, res4 = false;
-        String msg1 = "Problem 37: [Approach 1] Is the LinkedList a palindrome: ";
+        String msg1 = "Problem 37: Is the LinkedList a palindrome - ";
         res1 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq1));
         res2 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq2));
         res3 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq3));
