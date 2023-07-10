@@ -3,8 +3,8 @@ package dataStructures.linkedList.chapterProblems;
 import dataStructures.linkedList.ListNode;
 import dataStructures.linkedList.ListNodeUtils;
 
-public class Problem_16_to_17 {
-    // Problem 16: Insert a node in a sorted LinkedList
+public class Problem_15_to_16 {
+    // Problem 15: Insert a node in a sorted LinkedList
     public static ListNode insertIntoSortedList(ListNode head, int item){
         // Input LinkedList is empty
         if(head == null){
@@ -49,7 +49,7 @@ public class Problem_16_to_17 {
         return head;
     }
 
-    // Problem 17: Reverse a LinkedList iteratively
+    // Problem 16: Reverse a LinkedList iteratively
     // Time  complexity: O[N]
     // Space complexity: O[1]
     private static ListNode reverseLinkedListIterative(ListNode head) {
@@ -65,7 +65,7 @@ public class Problem_16_to_17 {
         return prev;
     }
 
-    // Problem 17: Reverse a LinkedList recursively
+    // Problem 16: Reverse a LinkedList recursively
     // Time  complexity: O[N]
     // Space complexity: O[1]
     private static ListNode reverseLinkedListRecursive(ListNode head) {
@@ -80,7 +80,7 @@ public class Problem_16_to_17 {
     }
 
     public static void main(String[] args) {
-        // Problem 16: Insert a node in a sorted LinkedList
+        // Problem 15: Insert a node in a sorted LinkedList
         // Step-1: Create a sorted LinkedList, say of size 5
         ListNode head = new ListNode(1);
         ListNode temp = head;
@@ -110,7 +110,7 @@ public class Problem_16_to_17 {
         System.out.println("Item is in-between the the smallest & largest elements of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
 
 
-        // Problem 17: Reverse a LinkedList
+        // Problem 16: Reverse a LinkedList
         // Iterative approach
         head = reverseLinkedListIterative(head);
         System.out.println("Reversed LinkedList (Iterative): \n" + ListNodeUtils.getListAsString(head));

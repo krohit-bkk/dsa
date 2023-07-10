@@ -56,7 +56,7 @@ public class Problem_6_to_14 {
         return false;
     }
 
-    // Problem 12: Find is loop exists and return the start of the loop
+    // Problem 11: Find is loop exists and return the start of the loop
     // Full implementation of Floyd's cycle finding algorithm
     // Time  complexity: O[N]
     // Space complexity: O[1]
@@ -87,7 +87,7 @@ public class Problem_6_to_14 {
         return slow.getData();
     }
 
-    // Problem 15: Find the length of loop in LinkedList
+    // Problem 14: Find the length of loop in LinkedList
     // Time  complexity: o[N]
     // Space complexity: O[1]
     private static int findLoopLength(ListNode head) {
@@ -145,9 +145,9 @@ public class Problem_6_to_14 {
         ListNode ll2 = ListNodeUtils.getListOfSize(12);
         ListNodeUtils.printList(ll2);
 
-        // Problem 6-7: Verify of the loop exists in a LinkedList
-        // Problem  11: Same as Problem 6 find whether Snake or Snail
-        //              - Snake (null terminated) or Snail(contains loop)]
+        // Problem  6-7: Verify of the loop exists in a LinkedList
+        // Problem 10-11: Same as Problem 6 find whether Snake or Snail
+        //              - Snake (null terminated) or Snail(contains loop)
         boolean doesLoopExists1 = problem_6_and_7_hashmap(ll1);
         boolean doesLoopExists2 = problem_6_and_7_hashmap(ll2);
         System.out.println("\nProblem 6-7: Does loop exist (expected -> True) : " + doesLoopExists1);
@@ -162,17 +162,17 @@ public class Problem_6_to_14 {
         System.out.println("\nProblem 9: Floyd's - does loop exist (expected -> True) : " + doesLoopExists3);
         System.out.println("Problem 9: Floyd's - does loop exist (expected -> False): " + doesLoopExists4);
 
-        // Problem 12: Check if loop exists in a LinkedList.
+        // Problem 11: Check if loop exists in a LinkedList.
         // If yes, find the start of the loop.
         int loopStartsAt1 = findLoopStartNode(ll1);
         int loopStartsAt2 = findLoopStartNode(ll2);
         System.out.println("\nProblem 12: Loop exists in LL1 at node: " + loopStartsAt1);
         System.out.println("Problem 12: Loop exists in LL2 at node: " + loopStartsAt2);
 
-        // Problem 15: Find the length of the loop
+        // Problem 14: Find the length of the loop
         int loopLength1 = findLoopLength(ll1);
         int loopLength2 = findLoopLength(ll2);
-        System.out.println("\nProblem 15: Loop exists in LL1 at node: " + loopLength1);
-        System.out.println("Problem 15: Loop exists in LL2 at node: " + loopLength2);
+        System.out.println("\nProblem 14: Loop exists in LL1 at node: " + loopLength1);
+        System.out.println("Problem 14: Loop exists in LL2 at node: " + loopLength2);
     }
 }

@@ -104,11 +104,12 @@ public class Problem_2_to_5 {
         int answer3 = problem3_using_hashmap(head, n);
         System.out.println("Problem-3 answer: " + answer3);
 
-        // Problem-4: Solving using brute force
+        // Problem-4: Solving using brute force, no HashMap
         int answer4 = problem4_brute_force(head, n);
         System.out.println("Problem-4 answer: " + answer4);
 
-        // Problem-5: Solving using brute force
+        // Problem-5: Most efficient
+        // Solving using 2 pointers maintaining a distance n
         int answer5 = problem5_most_efficient(head, n);
         System.out.println("Problem-5 answer: " + answer5);
     }

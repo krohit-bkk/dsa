@@ -3,7 +3,6 @@ package dataStructures.linkedList.chapterProblems;
 import dataStructures.linkedList.ListNode;
 import dataStructures.linkedList.ListNodeUtils;
 
-import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -13,8 +12,8 @@ import java.util.Stack;
 // Find:
 //   - if LinkedLists intersect
 //   - node of intersections
-public class Problem_18_to_24 {
-    // Problem 18: Brute force to find intersection
+public class Problem_17_to_23 {
+    // Problem 1: Brute force to find intersection
     // Time  complexity: O[N2]
     // Space complexity: O[1]
     private static boolean checkIntersectionBruteForce(ListNode ll1, ListNode ll2) {
@@ -34,7 +33,7 @@ public class Problem_18_to_24 {
         return false;
     }
 
-    // Problem 20: Use HashSet to find intersection
+    // Problem 19: Use HashSet to find intersection
     // Time  complexity: O[N]
     // Space complexity: O[N]
     private static boolean checkIntersectionHashSet(ListNode ll1, ListNode ll2) {
@@ -56,7 +55,7 @@ public class Problem_18_to_24 {
         return false;
     }
 
-    // Problem 21: Use Stacks to find intersection
+    // Problem 20: Use Stacks to find intersection
     // Time  complexity: O[N]
     // Space complexity: O[N]
     private static boolean checkIntersectionStacks(ListNode ll1, ListNode ll2) {
@@ -98,7 +97,7 @@ public class Problem_18_to_24 {
         return true;
     }
 
-    // Problem 24: Using no extra space
+    // Problem 23: Using no extra space
     // Use two pointers and maintain distance = len(ll1) - len(ll2)
     // Time  complexity: O[N]
     // Space complexity: O[N]
@@ -180,35 +179,35 @@ public class Problem_18_to_24 {
         ListNodeUtils.printList(ll2);
 
 
-        // Problem 18: Brute force approach
+        // Problem 17: Brute force approach
         // Compare each node of one LinkedList with each of another one
         boolean answer1 = checkIntersectionBruteForce(ll1, ll2);
         boolean answer2 = checkIntersectionBruteForce(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 18: Checking intersection (True): " + answer1);
-        System.out.println("Problem 18: Checking intersection (False): " + answer2);
+        System.out.println("Problem 17: Checking intersection (True): " + answer1);
+        System.out.println("Problem 17: Checking intersection (False): " + answer2);
 
-        // Problem 19/22/23: Using searching/sorting technique methods
+        // Problem 18/21/22: Using searching/sorting technique methods
         // We will revisit this in the respective chapters
 
-        // Problem 20: Using HashMap/HashSet approach
+        // Problem 19: Using HashMap/HashSet approach
         // Compare each node of one LinkedList with each of another one
         boolean answer3 = checkIntersectionHashSet(ll1, ll2);
         boolean answer4 = checkIntersectionHashSet(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 20: Checking intersection (True): " + answer3);
-        System.out.println("Problem 20: Checking intersection (False): " + answer4);
+        System.out.println("Problem 19: Checking intersection (True): " + answer3);
+        System.out.println("Problem 19: Checking intersection (False): " + answer4);
 
-        // Problem 21: Using Stacks approach
+        // Problem 20: Using Stacks approach
         boolean answer5 = checkIntersectionStacks(ll1, ll2);
         boolean answer6 = checkIntersectionStacks(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 21: Checking intersection (True): " + answer5);
-        System.out.println("Problem 21: Checking intersection (False): " + answer6);
+        System.out.println("Problem 20: Checking intersection (True): " + answer5);
+        System.out.println("Problem 20: Checking intersection (False): " + answer6);
 
-        // Problem 24: Using no extra space
+        // Problem 23: Using no extra space
         // Use two pointers and maintain distance = len(ll1) - len(ll2)
         boolean answer7 = checkIntersectionDistance(ll1, ll2);
         boolean answer8 = checkIntersectionDistance(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 24: Checking intersection (True): " + answer7);
-        System.out.println("Problem 24: Checking intersection (False): " + answer8);
+        System.out.println("Problem 23: Checking intersection (True): " + answer7);
+        System.out.println("Problem 23: Checking intersection (False): " + answer8);
 
     }
 }
