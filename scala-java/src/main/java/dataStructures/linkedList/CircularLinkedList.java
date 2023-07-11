@@ -1,9 +1,5 @@
 package dataStructures.linkedList;
 
-import scala.collection.concurrent.LNode;
-
-import java.util.List;
-
 public class CircularLinkedList {
     private ListNode head;
     private int length;
