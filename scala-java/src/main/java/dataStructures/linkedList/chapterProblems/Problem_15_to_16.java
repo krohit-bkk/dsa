@@ -4,6 +4,46 @@ import dataStructures.linkedList.ListNode;
 import dataStructures.linkedList.ListNodeUtils;
 
 public class Problem_15_to_16 {
+    public static void main(String[] args) {
+        // Problem 15: Insert a node in a sorted LinkedList
+        // Step-1: Create a sorted LinkedList, say of size 5
+        ListNode head = new ListNode(1);
+        ListNode temp = head;
+        int counter = 1;
+        while(counter < 5){
+            counter += 1;
+            if(counter != 3){
+                ListNode node = new ListNode(counter);
+                temp.setNext(node);
+                temp = temp.getNext();
+            }
+        }
+        // Verify
+        ListNodeUtils.printList(head);
+
+        // Step-2: Insert item into sorted LinkedList
+        // Case 1: Insertion at the beginning of LinkedList
+        head = insertIntoSortedList(head, 0);
+        System.out.println("Item is smaller than the smallest element of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
+
+        // Case 2: Insertion at the end of LinkedList
+        head = insertIntoSortedList(head, 6);
+        System.out.println("Item is larger than the largest element of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
+
+        // Case 3: Insertion in the middle of the LinkedList
+        head = insertIntoSortedList(head, 3);
+        System.out.println("Item is in-between the the smallest & largest elements of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
+
+
+        // Problem 16: Reverse a LinkedList
+        // Iterative approach
+        head = reverseLinkedListIterative(head);
+        System.out.println("Reversed LinkedList (Iterative): \n" + ListNodeUtils.getListAsString(head));
+        // recursive approach
+        head = reverseLinkedListRecursive(head);
+        System.out.println("Reversed LinkedList (Recursive): \n" + ListNodeUtils.getListAsString(head));
+    }
+
     // Problem 15: Insert a node in a sorted LinkedList
     public static ListNode insertIntoSortedList(ListNode head, int item){
         // Input LinkedList is empty
@@ -77,45 +117,5 @@ public class Problem_15_to_16 {
         headNext.setNext(head);
         head.setNext(null);
         return newHead;
-    }
-
-    public static void main(String[] args) {
-        // Problem 15: Insert a node in a sorted LinkedList
-        // Step-1: Create a sorted LinkedList, say of size 5
-        ListNode head = new ListNode(1);
-        ListNode temp = head;
-        int counter = 1;
-        while(counter < 5){
-            counter += 1;
-            if(counter != 3){
-                ListNode node = new ListNode(counter);
-                temp.setNext(node);
-                temp = temp.getNext();
-            }
-        }
-        // Verify
-        ListNodeUtils.printList(head);
-
-        // Step-2: Insert item into sorted LinkedList
-        // Case 1: Insertion at the beginning of LinkedList
-        head = insertIntoSortedList(head, 0);
-        System.out.println("Item is smaller than the smallest element of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
-
-        // Case 2: Insertion at the end of LinkedList
-        head = insertIntoSortedList(head, 6);
-        System.out.println("Item is larger than the largest element of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
-
-        // Case 3: Insertion in the middle of the LinkedList
-        head = insertIntoSortedList(head, 3);
-        System.out.println("Item is in-between the the smallest & largest elements of LL\n" + ListNodeUtils.getListAsString(head) + "\n");
-
-
-        // Problem 16: Reverse a LinkedList
-        // Iterative approach
-        head = reverseLinkedListIterative(head);
-        System.out.println("Reversed LinkedList (Iterative): \n" + ListNodeUtils.getListAsString(head));
-        // recursive approach
-        head = reverseLinkedListRecursive(head);
-        System.out.println("Reversed LinkedList (Recursive): \n" + ListNodeUtils.getListAsString(head));
     }
 }

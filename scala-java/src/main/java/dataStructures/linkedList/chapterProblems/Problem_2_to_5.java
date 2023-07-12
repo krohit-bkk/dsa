@@ -9,6 +9,31 @@ import java.util.Map;
 // Find n-th node from the end of a LinkedList
 public class Problem_2_to_5 {
 
+    public static void main(String[] args) throws Exception {
+        // Create a dummy LinkedList, say of size 10
+        ListNode head = ListNodeUtils.getListOfSize(10);
+        ListNodeUtils.printList(head);
+
+        // n-th index from the end
+        int n = 0;
+
+        // Problem-2: Solving through the suggested approach is way too useless
+
+        // Problem-3: Solving using HashMap
+        int answer3 = problem3_using_hashmap(head, n);
+        System.out.println("Problem-3 answer: " + answer3);
+
+        // Problem-4: Solving using brute force, no HashMap
+        int answer4 = problem4_brute_force(head, n);
+        System.out.println("Problem-4 answer: " + answer4);
+
+        // Problem-5: Most efficient
+        // Solving using 2 pointers maintaining a distance n
+        int answer5 = problem5_most_efficient(head, n);
+        System.out.println("Problem-5 answer: " + answer5);
+    }
+
+    // Problem 3
     // Time  complexity: O[N]
     // Space complexity: O[N]
     private static int problem3_using_hashmap(ListNode head, int n) {
@@ -31,6 +56,7 @@ public class Problem_2_to_5 {
         return map.get(requiredIndex).getData();
     }
 
+    // Problem 4
     // Time  complexity: O[N]
     // Space complexity: O[1]
     public static int problem4_brute_force(ListNode head, int n){
@@ -62,6 +88,7 @@ public class Problem_2_to_5 {
         return curr.getData();
     }
 
+    // Problem 5
     // Time  complexity: O[N]
     // Space complexity: O[1]
     private static int problem5_most_efficient(ListNode head, int n) {
@@ -88,29 +115,5 @@ public class Problem_2_to_5 {
         }
         // Return answer
         return req.getData();
-    }
-
-    public static void main(String[] args) throws Exception {
-        // Create a dummy LinkedList, say of size 10
-        ListNode head = ListNodeUtils.getListOfSize(10);
-        ListNodeUtils.printList(head);
-
-        // n-th index from the end
-        int n = 0;
-
-        // Problem-2: Solving through the suggested approach is way too useless
-
-        // Problem-3: Solving using HashMap
-        int answer3 = problem3_using_hashmap(head, n);
-        System.out.println("Problem-3 answer: " + answer3);
-
-        // Problem-4: Solving using brute force, no HashMap
-        int answer4 = problem4_brute_force(head, n);
-        System.out.println("Problem-4 answer: " + answer4);
-
-        // Problem-5: Most efficient
-        // Solving using 2 pointers maintaining a distance n
-        int answer5 = problem5_most_efficient(head, n);
-        System.out.println("Problem-5 answer: " + answer5);
     }
 }

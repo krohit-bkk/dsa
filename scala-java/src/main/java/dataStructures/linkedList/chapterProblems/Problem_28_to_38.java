@@ -5,6 +5,93 @@ import dataStructures.linkedList.ListNodeUtils;
 
 public class Problem_28_to_38 {
 
+    public static void main(String[] args) throws Exception {
+        ListNode evenList = ListNodeUtils.getListOfSize(10);
+        ListNode oddList  = ListNodeUtils.getListOfSize(11);
+
+        ListNodeUtils.printList(evenList);
+
+        // Problem 28: Display a LinkedList from the end
+        System.out.println("\nProblem 28: Displaying LinkedLists in reverse.");
+        problem_28_displayFromEnd(evenList);
+
+        // Problem 29: Check if the length of LinkedList is even or odd
+        System.out.println();
+        problem_29_isLengthEvenOdd(evenList);
+        problem_29_isLengthEvenOdd(oddList);
+
+        // Problem 31: Given two sorted LinkedLists, merge them in sorted order in third LinkedList
+        // Approach 1: Iterative method
+        System.out.println();
+        System.out.println("\nProblem 32: Merging two sorted LinkedLists");
+        int[] arr1 = new int[]{1,3,5};
+        int[] arr2 = new int[]{2,4,6,8};
+        ListNode ll1 = ListNodeUtils.getArrayAsLinkedList(arr1);
+        ListNodeUtils.printList(ll1);
+        ListNode ll2 = ListNodeUtils.getArrayAsLinkedList(arr2);
+        ListNodeUtils.printList(ll2);
+        ListNode sortedList1 = mergeSortedIterative(ll1, ll2);
+        System.out.print("Merged Iterative : ");
+        ListNodeUtils.printList(sortedList1);
+
+        // Problem 31: Given two sorted LinkedLists, merge them in sorted order in third LinkedList
+        // Approach 2: Recursive method
+        ListNode sortedList2 = mergeSortedRecursive(ll1, ll2);
+        System.out.print("Merged Recursive : ");
+        ListNodeUtils.printList(sortedList2);
+
+        // Problem 32: Reverse LinkedList in pairs
+        // Approach 1: Recursive method
+        System.out.println("\nProblem 34: Pair reverse the LinkedList - Recursively");
+        ll1 = ListNodeUtils.getListOfSize(4);
+        ListNodeUtils.printList(ll1);
+        ListNode pairReversed1 = pairReversedRecursive(ll1);
+        ListNodeUtils.printList(pairReversed1);
+
+        // Problem 32: Reverse LinkedList in pairs
+        // Approach 2: Iterative method
+        System.out.println("\nProblem 34: Pair reverse the LinkedList - Iteratively");
+        ll1 = ListNodeUtils.getListOfSize(6);
+        ListNodeUtils.printList(ll1);
+        ListNode pairReversed2 = pairReversedIterative(ll1);
+        ListNodeUtils.printList(pairReversed2);
+
+        // Problem XX: Exchange adjacent elements of the LinkedList
+        System.out.println("\nProblem XX: Exchange adjacent elements of the LinkedList");
+        System.out.println("[XX] - Means the question is from different version of the book.");
+        ll1 = ListNodeUtils.getListOfSize(5);
+        ListNodeUtils.printList(ll1);
+        ListNode adjacentExchanged = adjacentExchanged(ll1);
+        ListNodeUtils.printList(adjacentExchanged);
+
+        // Problem 33-34: Binary Tree related, Sorting related - in respective chapters
+        // Problem 35-36: Splitting CircularLinkedList in half - Meh...
+
+        // Problem 37: Check if a LinkedList is a palindrome or not
+        // Approach 1: Without using any additional space (iterating twice)
+        int[] seq1 = new int[]{1,2,3,4,5,4,3,2,1};  // True - odd length
+        int[] seq2 = new int[]{1,2,3,4,4,3,2,1};    // True - even length
+        int[] seq3 = new int[]{1,2,3,4,5,4,3,2,0};  // False - odd length
+        int[] seq4 = new int[]{1,2,3,4,2,1};        // False - even length
+        boolean res1, res2, res3, res4 = false;
+        String msg1 = "Problem 37: Is the LinkedList a palindrome - ";
+        res1 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq1));
+        res2 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq2));
+        res3 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq3));
+        res4 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq4));
+        System.out.println("\n" + msg1 + res1);
+        System.out.println(msg1 + res2);
+        System.out.println(msg1 + res3);
+        System.out.println(msg1 + res4);
+
+        // Problem 38: Reverse a LinkedList in block of K (K > 0)
+        System.out.println("\nProblem 38: Reverse a LinkedList in block of K");
+        ll1 = ListNodeUtils.getListOfSize(8);
+        ListNodeUtils.printList(ll1);
+        ListNode kBlockReverse = kBlockReverseRecursive(ll1, 10);
+        ListNodeUtils.printList(kBlockReverse);
+    }
+
     // Problem 28: Display LinkedList from the end
     // Time  complexity: O[N]
     // Space complexity: O[1]
@@ -279,92 +366,4 @@ public class Problem_28_to_38 {
         // Return head node
         return prev;
     }
-
-    public static void main(String[] args) throws Exception {
-        ListNode evenList = ListNodeUtils.getListOfSize(10);
-        ListNode oddList  = ListNodeUtils.getListOfSize(11);
-
-        ListNodeUtils.printList(evenList);
-
-        // Problem 28: Display a LinkedList from the end
-        System.out.println("\nProblem 28: Displaying LinkedLists in reverse.");
-        problem_28_displayFromEnd(evenList);
-
-        // Problem 29: Check if the length of LinkedList is even or odd
-        System.out.println();
-        problem_29_isLengthEvenOdd(evenList);
-        problem_29_isLengthEvenOdd(oddList);
-
-        // Problem 31: Given two sorted LinkedLists, merge them in sorted order in third LinkedList
-        // Approach 1: Iterative method
-        System.out.println();
-        System.out.println("\nProblem 32: Merging two sorted LinkedLists");
-        int[] arr1 = new int[]{1,3,5};
-        int[] arr2 = new int[]{2,4,6,8};
-        ListNode ll1 = ListNodeUtils.getArrayAsLinkedList(arr1);
-        ListNodeUtils.printList(ll1);
-        ListNode ll2 = ListNodeUtils.getArrayAsLinkedList(arr2);
-        ListNodeUtils.printList(ll2);
-        ListNode sortedList1 = mergeSortedIterative(ll1, ll2);
-        System.out.print("Merged Iterative : ");
-        ListNodeUtils.printList(sortedList1);
-
-        // Problem 31: Given two sorted LinkedLists, merge them in sorted order in third LinkedList
-        // Approach 2: Recursive method
-        ListNode sortedList2 = mergeSortedRecursive(ll1, ll2);
-        System.out.print("Merged Recursive : ");
-        ListNodeUtils.printList(sortedList2);
-
-        // Problem 32: Reverse LinkedList in pairs
-        // Approach 1: Recursive method
-        System.out.println("\nProblem 34: Pair reverse the LinkedList - Recursively");
-        ll1 = ListNodeUtils.getListOfSize(4);
-        ListNodeUtils.printList(ll1);
-        ListNode pairReversed1 = pairReversedRecursive(ll1);
-        ListNodeUtils.printList(pairReversed1);
-
-        // Problem 32: Reverse LinkedList in pairs
-        // Approach 2: Iterative method
-        System.out.println("\nProblem 34: Pair reverse the LinkedList - Iteratively");
-        ll1 = ListNodeUtils.getListOfSize(6);
-        ListNodeUtils.printList(ll1);
-        ListNode pairReversed2 = pairReversedIterative(ll1);
-        ListNodeUtils.printList(pairReversed2);
-
-        // Problem XX: Exchange adjacent elements of the LinkedList
-        System.out.println("\nProblem XX: Exchange adjacent elements of the LinkedList");
-        System.out.println("[XX] - Means the question is from different version of the book.");
-        ll1 = ListNodeUtils.getListOfSize(5);
-        ListNodeUtils.printList(ll1);
-        ListNode adjacentExchanged = adjacentExchanged(ll1);
-        ListNodeUtils.printList(adjacentExchanged);
-
-        // Problem 33-34: Binary Tree related, Sorting related - in respective chapters
-        // Problem 35-36: Splitting CircularLinkedList in half - Meh...
-
-        // Problem 37: Check if a LinkedList is a palindrome or not
-        // Approach 1: Without using any additional space (iterating twice)
-        int[] seq1 = new int[]{1,2,3,4,5,4,3,2,1};  // True - odd length
-        int[] seq2 = new int[]{1,2,3,4,4,3,2,1};    // True - even length
-        int[] seq3 = new int[]{1,2,3,4,5,4,3,2,0};  // False - odd length
-        int[] seq4 = new int[]{1,2,3,4,2,1};        // False - even length
-        boolean res1, res2, res3, res4 = false;
-        String msg1 = "Problem 37: Is the LinkedList a palindrome - ";
-        res1 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq1));
-        res2 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq2));
-        res3 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq3));
-        res4 = isPalindrome1(ListNodeUtils.getArrayAsLinkedList(seq4));
-        System.out.println("\n" + msg1 + res1);
-        System.out.println(msg1 + res2);
-        System.out.println(msg1 + res3);
-        System.out.println(msg1 + res4);
-
-        // Problem 38: Reverse a LinkedList in block of K (K > 0)
-        System.out.println("\nProblem 38: Reverse a LinkedList in block of K");
-        ll1 = ListNodeUtils.getListOfSize(8);
-        ListNodeUtils.printList(ll1);
-        ListNode kBlockReverse = kBlockReverseRecursive(ll1, 10);
-        ListNodeUtils.printList(kBlockReverse);
-    }
-
 }

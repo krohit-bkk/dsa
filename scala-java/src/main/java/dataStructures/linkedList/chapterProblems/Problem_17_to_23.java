@@ -13,7 +13,68 @@ import java.util.Stack;
 //   - if LinkedLists intersect
 //   - node of intersections
 public class Problem_17_to_23 {
-    // Problem 1: Brute force to find intersection
+    public static void main(String[] args) throws Exception {
+        // Create first LinkedList
+        ListNode ll1 = ListNodeUtils.getListOfSize(10);
+        ListNode ll2 = ListNodeUtils.getListOfSize(4);
+
+        // Lets see both LinkedLists
+        System.out.println(">>>> Before intersection....");
+        ListNodeUtils.printList(ll1);
+        ListNodeUtils.printList(ll2);
+        // Let's join the end of ll2 with 7-th node of ll1
+        int counter = 0;
+        ListNode seventNode = ll1;
+        while(counter < 6) {
+            seventNode = seventNode.getNext();
+            counter += 1;
+        }
+
+        ListNode curr = ll2;
+        while(curr.getNext()!= null)
+            curr = curr.getNext();
+
+        curr.setNext(seventNode);
+
+        // Let's see both LinkedLists after intersection
+        System.out.println(">>>> After intersection....");
+        ListNodeUtils.printList(ll1);
+        ListNodeUtils.printList(ll2);
+
+
+        // Problem 17: Brute force approach
+        // Compare each node of one LinkedList with each of another one
+        boolean answer1 = checkIntersectionBruteForce(ll1, ll2);
+        boolean answer2 = checkIntersectionBruteForce(ll1, ListNodeUtils.getListOfSize(5));
+        System.out.println("Problem 17: Checking intersection (True): " + answer1);
+        System.out.println("Problem 17: Checking intersection (False): " + answer2);
+
+        // Problem 18/21/22: Using searching/sorting technique methods
+        // We will revisit this in the respective chapters
+
+        // Problem 19: Using HashMap/HashSet approach
+        // Compare each node of one LinkedList with each of another one
+        boolean answer3 = checkIntersectionHashSet(ll1, ll2);
+        boolean answer4 = checkIntersectionHashSet(ll1, ListNodeUtils.getListOfSize(5));
+        System.out.println("Problem 19: Checking intersection (True): " + answer3);
+        System.out.println("Problem 19: Checking intersection (False): " + answer4);
+
+        // Problem 20: Using Stacks approach
+        boolean answer5 = checkIntersectionStacks(ll1, ll2);
+        boolean answer6 = checkIntersectionStacks(ll1, ListNodeUtils.getListOfSize(5));
+        System.out.println("Problem 20: Checking intersection (True): " + answer5);
+        System.out.println("Problem 20: Checking intersection (False): " + answer6);
+
+        // Problem 23: Using no extra space
+        // Use two pointers and maintain distance = len(ll1) - len(ll2)
+        boolean answer7 = checkIntersectionDistance(ll1, ll2);
+        boolean answer8 = checkIntersectionDistance(ll1, ListNodeUtils.getListOfSize(5));
+        System.out.println("Problem 23: Checking intersection (True): " + answer7);
+        System.out.println("Problem 23: Checking intersection (False): " + answer8);
+
+    }
+
+    // Problem 17: Brute force to find intersection
     // Time  complexity: O[N2]
     // Space complexity: O[1]
     private static boolean checkIntersectionBruteForce(ListNode ll1, ListNode ll2) {
@@ -150,64 +211,4 @@ public class Problem_17_to_23 {
         return false;
     }
 
-    public static void main(String[] args) throws Exception {
-        // Create first LinkedList
-        ListNode ll1 = ListNodeUtils.getListOfSize(10);
-        ListNode ll2 = ListNodeUtils.getListOfSize(4);
-
-        // Lets see both LinkedLists
-        System.out.println(">>>> Before intersection....");
-        ListNodeUtils.printList(ll1);
-        ListNodeUtils.printList(ll2);
-        // Let's join the end of ll2 with 7-th node of ll1
-        int counter = 0;
-        ListNode seventNode = ll1;
-        while(counter < 6) {
-            seventNode = seventNode.getNext();
-            counter += 1;
-        }
-
-        ListNode curr = ll2;
-        while(curr.getNext()!= null)
-            curr = curr.getNext();
-
-        curr.setNext(seventNode);
-
-        // Let's see both LinkedLists after intersection
-        System.out.println(">>>> After intersection....");
-        ListNodeUtils.printList(ll1);
-        ListNodeUtils.printList(ll2);
-
-
-        // Problem 17: Brute force approach
-        // Compare each node of one LinkedList with each of another one
-        boolean answer1 = checkIntersectionBruteForce(ll1, ll2);
-        boolean answer2 = checkIntersectionBruteForce(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 17: Checking intersection (True): " + answer1);
-        System.out.println("Problem 17: Checking intersection (False): " + answer2);
-
-        // Problem 18/21/22: Using searching/sorting technique methods
-        // We will revisit this in the respective chapters
-
-        // Problem 19: Using HashMap/HashSet approach
-        // Compare each node of one LinkedList with each of another one
-        boolean answer3 = checkIntersectionHashSet(ll1, ll2);
-        boolean answer4 = checkIntersectionHashSet(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 19: Checking intersection (True): " + answer3);
-        System.out.println("Problem 19: Checking intersection (False): " + answer4);
-
-        // Problem 20: Using Stacks approach
-        boolean answer5 = checkIntersectionStacks(ll1, ll2);
-        boolean answer6 = checkIntersectionStacks(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 20: Checking intersection (True): " + answer5);
-        System.out.println("Problem 20: Checking intersection (False): " + answer6);
-
-        // Problem 23: Using no extra space
-        // Use two pointers and maintain distance = len(ll1) - len(ll2)
-        boolean answer7 = checkIntersectionDistance(ll1, ll2);
-        boolean answer8 = checkIntersectionDistance(ll1, ListNodeUtils.getListOfSize(5));
-        System.out.println("Problem 23: Checking intersection (True): " + answer7);
-        System.out.println("Problem 23: Checking intersection (False): " + answer8);
-
-    }
 }
