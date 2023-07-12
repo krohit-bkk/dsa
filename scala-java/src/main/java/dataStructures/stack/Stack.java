@@ -64,4 +64,9 @@ public class Stack {
         System.out.println(getStackAsString());
         // System.out.println("Current size of Stack is: " + this.size);
     }
+
+    // Get the size of the stack
+    public int getSize(){
+        return this.size;
+    }
 }
