@@ -71,73 +71,6 @@ class RandomNode {
 }
 
 public class Problem_40_to_44 {
-    public static void main(String[] args) throws Exception {
-        // Problem 40: Josephus Circle
-        // TBD
-
-        // Problem 41: Given a LinkedList with data, next pointer and random pointer
-        // Write an algorithm to clone it
-        // Creating a LinkedList with Random pointers
-        RandomNode head = null;
-        RandomNode curr = null;
-        Map<Integer, RandomNode> map = new HashMap<Integer, RandomNode>();
-        int numNodes = 4;   // Control the number of elements in the LinkedList
-        for (int i = 0; i < numNodes; i++) {
-            RandomNode node = new RandomNode(i);
-            if(head == null)
-                head = node;
-            else
-                curr.setNext(node);
-            map.put(i, node);
-            curr = node;
-        }
-        // TEST
-        // System.out.println("Before random pointer assignment...");
-        // RandomNode.printList(head);
-
-        // Assign random pointers in the LinkedList
-        curr = head;
-        int index = 0;
-        Random r = new Random();
-        while(curr != null){
-            int randomIndex = r.nextInt(numNodes);
-            RandomNode currNode = map.get(index);
-            RandomNode randomNode = map.get(randomIndex);
-            currNode.setRandom(randomNode);
-            index += 1;
-            curr = curr.getNext();
-        }
-
-        System.out.println("Problem 41: Approach 1: Using extra space.");
-        System.out.println("Original LinkedList input...");
-        RandomNode.printList(head);
-
-        // Now cloning
-        RandomNode clonedHead = cloneRandomLinkedList(head);
-        System.out.println("After cloning the original LinkedList...");
-        RandomNode.printList(clonedHead);
-
-        System.out.println("\nProblem 42: Approach 2: Optimized way.");
-        System.out.println("Original LinkedList input...");
-        RandomNode.printList(head);
-        RandomNode clonedHead1 = cloneRandomLinkedListOptimized(head);
-        System.out.println("After cloning the original LinkedList (optimized)...");
-        RandomNode.printList(clonedHead1);
-
-        // Problem 43: Given a LinkedList with even and odd numbers, create an algorithm to
-        // make changes in such a way that even numbers appear at the beginning
-        ListNode list1 = ListNodeUtils.getListOfSize(8);
-        System.out.println("\nProblem 43: Even nodes before odd");
-        System.out.println("Before segregation...");
-        ListNodeUtils.printList(list1);
-        list1 = evenNodesAtBeginning(list1);
-        System.out.println("After segregation...");
-        ListNodeUtils.printList(list1);
-
-        // Problem 44: In a LinkedList with n nodes, the time taken to insert an element after
-        // an element pointed by some pointer is => O[1]
-    }
-
     // Problem 41: Given a LinkedList with data, next pointer and random pointer
     // Write an algorithm to clone it
     // Approach 1: Using extra space
@@ -245,6 +178,7 @@ public class Problem_40_to_44 {
     // create an algorithm for making changes to the list in such a way that
     // all even numbers appear at the beginning.
     private static ListNode evenNodesAtBeginning(ListNode head) {
+        // Step 1: Break the LinkedList into two LinkedLists (Even/Odd LLs)
         ListNode evenHead = null;
         ListNode  oddHead = null;
         ListNode evenLast = null;
@@ -279,8 +213,76 @@ public class Problem_40_to_44 {
         if(evenHead == null || oddHead == null)
             return head;
 
+        // Step 2: Append the Odd LL at the end of the even LL
         evenLast.setNext(oddHead);
         oddLast.setNext(null);
         return evenHead;
+    }
+
+    public static void main(String[] args) throws Exception {
+        // Problem 40: Josephus Circle
+        // TBD
+
+        // Problem 41: Given a LinkedList with data, next pointer and random pointer
+        // Write an algorithm to clone it
+        // Creating a LinkedList with Random pointers
+        RandomNode head = null;
+        RandomNode curr = null;
+        Map<Integer, RandomNode> map = new HashMap<Integer, RandomNode>();
+        int numNodes = 4;   // Control the number of elements in the LinkedList
+        for (int i = 0; i < numNodes; i++) {
+            RandomNode node = new RandomNode(i);
+            if(head == null)
+                head = node;
+            else
+                curr.setNext(node);
+            map.put(i, node);
+            curr = node;
+        }
+        // TEST
+        // System.out.println("Before random pointer assignment...");
+        // RandomNode.printList(head);
+
+        // Assign random pointers in the LinkedList
+        curr = head;
+        int index = 0;
+        Random r = new Random();
+        while(curr != null){
+            int randomIndex = r.nextInt(numNodes);
+            RandomNode currNode = map.get(index);
+            RandomNode randomNode = map.get(randomIndex);
+            currNode.setRandom(randomNode);
+            index += 1;
+            curr = curr.getNext();
+        }
+
+        System.out.println("Problem 41: Approach 1: Using extra space.");
+        System.out.println("Original LinkedList input...");
+        RandomNode.printList(head);
+
+        // Now cloning...
+        RandomNode clonedHead = cloneRandomLinkedList(head);
+        System.out.println("After cloning the original LinkedList...");
+        RandomNode.printList(clonedHead);
+
+        System.out.println("\nProblem 42: Approach 2: Optimized way.");
+        System.out.println("Original LinkedList input...");
+        RandomNode.printList(head);
+        RandomNode clonedHead1 = cloneRandomLinkedListOptimized(head);
+        System.out.println("After cloning the original LinkedList (optimized)...");
+        RandomNode.printList(clonedHead1);
+
+        // Problem 43: Given a LinkedList with even and odd numbers, create an algorithm to
+        // make changes in such a way that even numbers appear at the beginning
+        ListNode list1 = ListNodeUtils.getListOfSize(8);
+        System.out.println("\nProblem 43: Even nodes before odd");
+        System.out.println("Before segregation...");
+        ListNodeUtils.printList(list1);
+        list1 = evenNodesAtBeginning(list1);
+        System.out.println("After segregation...");
+        ListNodeUtils.printList(list1);
+
+        // Problem 44: In a LinkedList with n nodes, the time taken to insert an element after
+        // an element pointed by some pointer is => O[1]
     }
 }
