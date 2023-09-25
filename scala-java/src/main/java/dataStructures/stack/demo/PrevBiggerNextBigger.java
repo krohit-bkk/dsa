@@ -27,7 +27,7 @@ public class PrevBiggerNextBigger {
         // Brute force - looping twice
         // Time  complexity: O[N^2]
         // Space complexity: O[1]
-        Function<int[], int[]> unoptimized = arr -> {
+        Function<int[], int[]> unoptimizedAlgo = arr -> {
             int[] res = new int[arr.length];
             Arrays.fill(res, -1);
 
@@ -45,7 +45,7 @@ public class PrevBiggerNextBigger {
         // Optimized approach - using Stack
         // Time  complexity: O[N]
         // Space complexity: O[N]
-        Function<int[], int[]> optimized = arr -> {
+        Function<int[], int[]> optimizedAlgo = arr -> {
             int[] res = new int[arr.length];
             Arrays.fill(res, -1);
             Stack s = new Stack();
@@ -69,8 +69,8 @@ public class PrevBiggerNextBigger {
         };
 
         if(arr1 != null){
-            // return unoptimized.apply(arr1);
-            return optimized.apply(arr1);
+            // return unoptimizedAlgo.apply(arr1);
+            return optimizedAlgo.apply(arr1);
         }
         return null;
     }
@@ -79,7 +79,7 @@ public class PrevBiggerNextBigger {
         // Brute force - looping twice
         // Time  complexity: O[N^2]
         // Space complexity: O[1]
-        Function<int[], int[]> unoptimized = arr -> {
+        Function<int[], int[]> unoptimizedAlgo = arr -> {
             int[] res = new int[arr.length];
             Arrays.fill(res, -1);
 
@@ -97,7 +97,7 @@ public class PrevBiggerNextBigger {
         // Optimized approach - using Stack
         // Time  complexity: O[N]
         // Space complexity: O[N]
-        Function<int[], int[]> optimized = arr -> {
+        Function<int[], int[]> optimizedAlgo = arr -> {
             int[] res = new int[arr.length];
             Arrays.fill(res, -1);
             Stack s = new Stack();
@@ -122,8 +122,8 @@ public class PrevBiggerNextBigger {
         };
 
         if(arr1 != null){
-            // return unoptimized.apply(arr1);
-            return optimized.apply(arr1);
+            // return unoptimizedAlgo.apply(arr1);
+            return optimizedAlgo.apply(arr1);
         }
         return null;
     }

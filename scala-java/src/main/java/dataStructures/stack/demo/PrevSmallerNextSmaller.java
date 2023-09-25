@@ -29,7 +29,7 @@ public class PrevSmallerNextSmaller {
         // Brute force - looping twice
         // Time  complexity: O[N^2]
         // Space complexity: O[1]
-        Function<int[], int[]> unoptimized = arr -> {
+        Function<int[], int[]> unoptimizedAlgo = arr -> {
             int[] result = new int[arr.length];
             Arrays.fill(result, -1);
             for(int i = 0; i < arr.length; i++){
@@ -48,7 +48,7 @@ public class PrevSmallerNextSmaller {
         // Optimized approach - using Stack
         // Time  complexity: O[N]
         // Space complexity: O[N]
-        Function<int[], int[]> optimized = arr -> {
+        Function<int[], int[]> optimizedAlgo = arr -> {
             dataStructures.stack.Stack s = new Stack();
             int[] result = new int[arr.length];
             Arrays.fill(result, -1);
@@ -75,8 +75,8 @@ public class PrevSmallerNextSmaller {
         };
 
         if(arr1 != null){
-            // return unoptimized.apply(arr1);
-            return optimized.apply(arr1);
+            // return unoptimizedAlgo.apply(arr1);
+            return optimizedAlgo.apply(arr1);
         }
         return null;
     }
@@ -85,7 +85,7 @@ public class PrevSmallerNextSmaller {
         // Brute force - looping twice
         // Time  complexity: O[N^2]
         // Space complexity: O[1]
-        Function<int[], int[]> unoptimized = arr -> {
+        Function<int[], int[]> unoptimizedAlgo = arr -> {
             int[] result = new int[arr.length];
             Arrays.fill(result, -1);
             for(int i = arr.length - 1; i >= 0; i--){
@@ -104,7 +104,7 @@ public class PrevSmallerNextSmaller {
         // Optimized approach - using Stack
         // Time  complexity: O[N]
         // Space complexity: O[N]
-        Function<int[], int[]> optimized = arr -> {
+        Function<int[], int[]> optimizedAlgo = arr -> {
             Stack s = new Stack();
             int[] res = new int[arr.length];
             Arrays.fill(res, -1);
@@ -129,8 +129,8 @@ public class PrevSmallerNextSmaller {
         };
 
         if(arr1 != null){
-            // return unoptimized.apply(arr1);
-            return optimized.apply(arr1);
+            // return unoptimizedAlgo.apply(arr1);
+            return optimizedAlgo.apply(arr1);
         }
         return null;
     }
