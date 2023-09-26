@@ -1,19 +1,55 @@
 package dataStructures.stack.chapterProblems;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 import dataStructures.stack.Stack;
-import static utils.ArrayUtils.printArray;
+
+import static utils.ArrayUtils.getArrayAsString;
 
 public class Problem_24_30 {
     public static void main(String[] args) {
         // Problem 24: Find the largest rectangle area under histogram
         // Given the array of heights, find the area of the rectangle formed by
         // using array values as height and distance between value indices as base
-        // int[] arr = new int[]{4,2,1,5,6,3,2,4,2};
         int[] arr = new int[]{3,2,5,6,1,4,4};
         System.out.println("Problem 24: Greatest area under rectangle: " + problem_24_findArea(arr));
+
+        // Problem 25: For Problem-24, can we improve the time complexity?
         System.out.println("Problem 25: Greatest area under rectangle: " + problem_25_findAreaOptimized(arr));
+
+        // Problem 27: Recursively remove all adjacent duplicates.
+        // Given a string of characters, recursively remove adjacent duplicate characters from string.
+        // The output string should not have any adjacent duplicates
+        String[] strs = new String[]{"careermonk", "mississippi"};
+        for(String str : strs)
+            System.out.println("\nProblem 27: Input string ["
+                    + str
+                    + "],\nProblem 27: Output string: ["
+                    + problem_27_removeAdjacentDuplicates(str)
+                    + "]"
+            );
+
+        // Problem 28: Given an array of elements, replace every element with nearest greater element
+        // on the right of that element.
+        // Brute force approach
+        // Time  complexity: O[N^2]
+        // Space  complexity: O[1]
+        int[] problem28 = problem_28_nearestGreaterTowardsRight(arr);
+        System.out.println("\nProblem 28: Nearest greater towards right: "
+                + "\n" + getArrayAsString(arr)
+                + "\n" + getArrayAsString(problem28)
+        );
+
+        // Problem 29: For Problem-28, cun we improve the complexity?
+        // Using stacks
+        // Time  complexity: O[N]
+        // Space complexity: O[N]
+        int[] problem29 = problem_29_nearestGreaterTowardsRight(arr);
+        System.out.println("\nProblem 29: Nearest greater towards right (using stacks): "
+                + "\n" + getArrayAsString(arr)
+                + "\n" + getArrayAsString(problem29)
+        );
     }
 
     // Problem 24: Find the largest rectangle area under histogram
@@ -117,4 +153,89 @@ public class Problem_24_30 {
         }
         return area;
     }
+
+    // Problem 27: Recursively remove all adjacent duplicates.
+    // Given a string of characters, recursively remove adjacent duplicate characters from string.
+    // The output string should not have any adjacent duplicates
+    // Time  complexity: O[N]
+    // Space complexity: O[N]
+    private static String problem_27_removeAdjacentDuplicates(String str) {
+        if(str == null)
+            return null;
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+        for(Character c : str.toCharArray()){
+            if(stack.isEmpty())
+                stack.push(c);
+            else{
+                if(!stack.isEmpty() && stack.peek() != c)
+                    stack.push(c);
+                else
+                    stack.pop();
+            }
+        }
+        // Reverse the stck and get the output string
+        if(!stack.isEmpty()){
+            String output = "";
+            while(!stack.isEmpty()){
+                output = stack.pop() + output;
+            }
+            return output;
+        }
+        return null;
+    }
+
+    // Problem 28: Given an array of elements, replace every element with nearest greater element
+    // on the right of that element.
+    // Brute force approach
+    // Time  complexity: O[N^2]
+    // Space  complexity: O[1]
+    private static int[] problem_28_nearestGreaterTowardsRight(int[] arr) {
+        if(arr == null)
+            return null;
+
+        int[] res = new int[arr.length];
+        Arrays.fill(res, -1);
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i+1; j < arr.length; j++) {
+                if(arr[j] > arr[i]) {
+                    res[i] = arr[j];
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+
+    // Problem 29: For Problem-28, cun we improve the complexity?
+    // Given an array of elements, replace every element with nearest greater element
+    // on the right of that element.
+    // Optimal solution using stacks
+    // Time  complexity: O[N]
+    // Space complexity: O[N]
+    private static int[] problem_29_nearestGreaterTowardsRight(int[] arr) {
+        if(arr == null)
+            return null;
+
+        Stack stack = new Stack();
+        int[] res = new int[arr.length];
+        Arrays.fill(res, -1);
+
+        for (int i = arr.length-1; i >= 0; i--) {
+            if(stack.isEmpty()){
+                stack.push(arr[i]);
+                res[i] = -1;
+            }
+            else{
+                while(!stack.isEmpty() && stack.peek() <= arr[i])
+                    stack.pop();
+                if(!stack.isEmpty())
+                    res[i] = stack.peek();
+                else
+                    res[i] = -1;
+                stack.push(arr[i]);
+            }
+        }
+        return res;
+    }
+
 }
