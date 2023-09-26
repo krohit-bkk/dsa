@@ -4,20 +4,20 @@ import java.util.Arrays;
 
 public class Problem_24_30 {
     public static void main(String[] args) {
-        // Problem 25: Find the largest rectangle area under histogram
+        // Problem 24: Find the largest rectangle area under histogram
         // Given the array of heights, find the area of the rectangle formed by
         // using array values as height and distance between value indices as base
         int[] arr = new int[]{3,2,5,6,1,4,4};
-        System.out.println("Greatest area under rectangle: " + problem_26_findArea(arr));
+        System.out.println("Greatest area under rectangle: " + problem_24_findArea(arr));
     }
 
-    // Problem 25: Find the largest rectangle area under histogram
+    // Problem 24: Find the largest rectangle area under histogram
     // Brute force approach.
     // Use each index value as height and create rectangle by comparing it against
     // the other index values while keeping a track on the max area registered so far
     // Time  complexity: O[N^2]
     // Space complexity: O[1]
-    private static int problem_26_findArea(int[] arr) {
+    private static int problem_24_findArea(int[] arr) {
         if(arr == null)
             return 0;
 
