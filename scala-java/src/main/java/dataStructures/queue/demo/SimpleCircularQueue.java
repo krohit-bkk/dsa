@@ -232,7 +232,7 @@ class Demo{
         queue.enqueue(999);
         queue.getInfo();
 
-        arr1 = new int[]{100,200,300,400, 500};
+        arr1 = new int[]{100,200,300,400,500};
         for (int num : arr1) {
             queue.enqueue(num);
             queue.getInfo();
